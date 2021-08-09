@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_182958) do
+ActiveRecord::Schema.define(version: 2021_08_09_160622) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.boolean "favorite"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "videos", force: :cascade do |t|
     t.string "title"
