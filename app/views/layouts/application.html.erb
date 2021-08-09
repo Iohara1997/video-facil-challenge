@@ -15,6 +15,12 @@
     <%= menu_group do %>
       <%= menu_item "Adicionar novo vídeo", new_video_path %>
     <% end %>
+    <%= form_tag videos_search_path, method: :get, class:"navbar-form navbar-right" do %>
+      <div class="form-group">
+        <%= text_field_tag :title, @title, class: "form-control" %>
+        <%= button_to "Buscar", nil, class: "btn btn-default" %>
+      </div>
+    <% end %>
   <% end %>
     <div class = "container">
     <%= yield %>

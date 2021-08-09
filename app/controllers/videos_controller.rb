@@ -14,4 +14,9 @@ class VideosController < ApplicationController
         Video.destroy id
         redirect_to root_url
     end
+
+    def search
+        @title = params[:title]
+        @videos = Video.where "title like ?", "%#{@title}%"
+    end
 end
