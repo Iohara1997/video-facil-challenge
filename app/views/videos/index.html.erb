@@ -4,6 +4,7 @@
         <tr>
             <td>Título</td>
             <td>URL</td>
+            <td colspan="1">
         </tr>
     </thead>
     <tbody>
@@ -11,6 +12,7 @@
         <tr>
             <td><%= video.title %></td>
             <td><%= video.url %></td>
+            <td><%= button_to "Delete", video, method: :delete, class:"btn btn-danger", data: {confirm: "Tem certeza de que deseja remover permanentemente este vídeo?"} %></td>
         </tr>
         <% end %>
     </tbody>
