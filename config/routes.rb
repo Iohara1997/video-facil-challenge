@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  delete "videos/:id/delete", to: "videos#destroy", as: :video
-  post "videos", to: "videos#create"
-  get "videos/new", to:"videos#new"
+  resources :videos, only: [:new, :create, :destroy]
   root to:"videos#index"
 end
