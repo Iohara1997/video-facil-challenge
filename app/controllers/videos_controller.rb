@@ -3,10 +3,19 @@ class VideosController < ApplicationController
         @videos = Video.order :nome
     end
 
+    def new
+        @video = Video.new
+    end
+
     def create
-        video = params.require(:video).permit(:title, :url)
-        Video.create video
-        redirect_to root_url
+        video_value = params.require(:video).permit(:title, :url)
+        @video = Video.new video_value
+        if @video.save
+            flash[:notice] = "Vídeo salvo com sucesso!"
+            redirect_to root_url
+        else
+            render :new
+        end
     end
 
     def destroy
