@@ -1,23 +1,17 @@
-<html>
-    <%= nav_bar brand: "Vídeo Fácil", brand_link: root_url %>
-    <div class = "container">
-        <body>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <td>Título</td>
-                        <td>URL</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @videos.each do |video| %>
-                    <tr>
-                        <td><%= video.title %></td>
-                        <td><%= video.url %></td>
-                    </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </body>
-    </div>
-</html>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Título</td>
+            <td>URL</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @videos.each do |video| %>
+        <tr>
+            <td><%= video.title %></td>
+            <td><%= video.url %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
