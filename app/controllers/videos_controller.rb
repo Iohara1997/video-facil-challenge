@@ -3,7 +3,7 @@ class VideosController < ApplicationController
     before_action :set_video, only: [:edit, :update, :destroy]
 
     def index
-        @videos = Video.order :nome
+        @videos = Video.joins(:category).merge(Category.where(favorite: true))
     end
 
     def new
