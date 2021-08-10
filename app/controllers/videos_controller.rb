@@ -1,4 +1,7 @@
 class VideosController < ApplicationController
+
+    before_action :set_video, only: [:edit, :update, :destroy]
+
     def index
         @videos = Video.order :nome
     end
@@ -9,44 +12,50 @@ class VideosController < ApplicationController
     end
 
     def create
-        video_value = params.require(:video).permit(:title, :url, :category_id)
-        @video = Video.new video_value
+        @video = Video.new video_params
         if @video.save
             flash[:notice] = "Vídeo salvo com sucesso!"
             redirect_to root_url
         else
-            render :new
+            set_render :new
         end
     end
 
     def edit
-        id = params[:id]
-        @video = Video.find(id)
-        @categories = Category.all
-        render :new
+        set_render :edit
     end
 
     def update
-        id = params[:id]
-        @video = Video.find(id)
-        video_value = params.require(:video).permit(:title, :url, :category_id)
-        if @video.update video_value
+        if @video.update video_params
             flash[:notice] = "Vídeo atualizado com sucesso!"
             redirect_to root_url
         else
-            @categories = Category.all
-            render :new
+            set_render :edit
         end
     end
 
     def destroy
-        id = params[:id]
-        Video.destroy id
+        @video.destroy
         redirect_to root_url
     end
 
     def search
         @title = params[:title]
         @videos = Video.where "title like ?", "%#{@title}%"
+    end
+
+    private
+
+    def video_params
+        params.require(:video).permit(:title, :url, :category_id)
+    end
+
+    def set_video
+        @video = Video.find(params[:id])
+    end
+
+    def set_render(view)
+        @categories = Category.all
+        render view
     end
 end

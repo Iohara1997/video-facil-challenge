@@ -1,0 +1,36 @@
+<% @video.errors.full_messages.each do |msg| %>
+    <div class= "alert alert-danger" role="alert">
+        <%= msg %>
+    </div>
+<% end %>
+
+<%= form_for @video do |form|  %>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="form-group">
+        <%= form.label :Título %>
+        <%= form.text_field :title, class:"form-control" %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8">
+        <div class="form-group">
+            <%= form.label :URL %>
+            <%= form.text_field :url, class:"form-control" %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+        <div class="form-group">
+            <%= form.label :categoria %>
+            <%= form.collection_select :category_id, @categories, :id, :title, {} ,class:"form-control" %>
+        </div>
+    </div>
+</div>
+
+<%= form.submit action_text, class: "btn btn-primary" %>
+<% end %>
