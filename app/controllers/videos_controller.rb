@@ -21,6 +21,10 @@ class VideosController < ApplicationController
         end
     end
 
+    def show
+        @video = Video.where("id = ?", params[:id])
+    end
+
     def edit
         set_render :edit
     end

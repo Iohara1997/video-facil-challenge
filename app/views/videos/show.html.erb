@@ -1,0 +1,23 @@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Título</td>
+            <td>URL</td>
+            <td>Categoria</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @video.each do |v|%>
+        <tr>
+            <td><%= v.title %></td>
+            <td><%= v.url %></td>
+            <td><%= v.category.title %></td>
+        </tr>
+    </tbody>
+</table>
+
+<p style="text-align:center">
+    <%=raw YouTubeAddy.youtube_embed_url(v.url,420,315) %>
+</p>
+<% end %>
+<%= link_to 'Voltar', root_path, class: "btn btn-primary" %>
