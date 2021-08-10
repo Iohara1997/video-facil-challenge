@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @category.title %>
-</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Título</td>
+            <td>URL</td>
+            <td>Categoria</td>
+            <td colspan="2">
+        </tr>
+    </thead>
+    <tbody>
+        <%= render @videos_category %>
+    </tbody>
+</table>
 
-<p>
-  <strong>Favorite:</strong>
-  <%= @category.favorite %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Editar', edit_category_path(@category), class: "btn btn-info" %> |
+<%= link_to 'Voltar', categories_path, class: "btn btn-primary" %>

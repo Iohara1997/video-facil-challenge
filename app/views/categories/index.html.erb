@@ -16,9 +16,9 @@
       <tr>
         <td><%= category.title %></td>
         <td><%= category.favorite %></td>
-        <td><%= link_to 'Mostrar', category %></td>
-        <td><%= link_to 'Editar', edit_category_path(category) %></td>
-        <td><%= link_to 'Deletar', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver vídeos', category, class: "btn btn-success" %></td>
+        <td><%= link_to 'Editar', edit_category_path(category), class: "btn btn-info" %></td>
+        <td><%= link_to 'Deletar', category, method: :delete, data: { confirm: 'Tem certeza que deseja deletar?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'Criar Categoria', new_category_path %>
+<%= link_to 'Criar Categoria', new_category_path, class: "btn btn-primary" %>
