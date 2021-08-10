@@ -19,6 +19,26 @@ class VideosController < ApplicationController
         end
     end
 
+    def edit
+        id = params[:id]
+        @video = Video.find(id)
+        @categories = Category.all
+        render :new
+    end
+
+    def update
+        id = params[:id]
+        @video = Video.find(id)
+        video_value = params.require(:video).permit(:title, :url, :category_id)
+        if @video.update video_value
+            flash[:notice] = "Vídeo atualizado com sucesso!"
+            redirect_to root_url
+        else
+            @categories = Category.all
+            render :new
+        end
+    end
+
     def destroy
         id = params[:id]
         Video.destroy id

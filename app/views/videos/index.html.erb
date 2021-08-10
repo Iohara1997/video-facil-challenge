@@ -10,7 +10,7 @@
             <td>Título</td>
             <td>URL</td>
             <td>Categoria</td>
-            <td colspan="1">
+            <td colspan="2">
         </tr>
     </thead>
     <tbody>
@@ -20,6 +20,7 @@
             <td><%= video.url %></td>
             <td><%= video.category.title %></td>
             <td><%= button_to "Deletar", video, method: :delete, class:"btn btn-danger", data: {confirm: "Tem certeza de que deseja remover permanentemente este vídeo?"} %></td>
+            <td><%= link_to "Editar", edit_video_path(video), class:"btn btn-info" %></td>
         </tr>
         <% end %>
     </tbody>
