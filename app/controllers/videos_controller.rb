@@ -9,7 +9,7 @@ class VideosController < ApplicationController
     end
 
     def create
-        video_value = params.require(:video).permit(:title, :url)
+        video_value = params.require(:video).permit(:title, :url, :category_id)
         @video = Video.new video_value
         if @video.save
             flash[:notice] = "Vídeo salvo com sucesso!"
